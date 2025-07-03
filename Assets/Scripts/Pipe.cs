@@ -8,13 +8,17 @@ public class Pipe : Obstacle
     public Transform bottomPipe;
     public BoxCollider2D triggerReward;
     [SerializeField] private float despawnX;
-    
+
+    [Header("Spawn")]
+    public Vector2 pipeSpawnPos;
 
     [Header("Giới hạn vị trí trung tâm khoảng hở")]
     public float minCenterY = 0f;
     public float maxCenterY = 4f;
 
     public float minGap = 10f;
+
+    private float currTriggerCenterY;
     protected override void Awake()
     {
         base.Awake();
@@ -33,11 +37,11 @@ public class Pipe : Obstacle
 
         if (transform.position.x < despawnX)
         {
-            ReturnToPool();
+            Despawn();
         }
     }
 
-    public void RandomizeGapPosition()
+    private void RandomizeGapPosition()
     {
         float bottomRandCenterY = Random.Range(minCenterY, maxCenterY);
 
@@ -50,5 +54,22 @@ public class Pipe : Obstacle
         triggerReward.transform.localPosition = new Vector2(triggerReward.transform.localPosition.x, triggerCenterY);
 
         triggerReward.size = new Vector2(0.5f, triggerCenterY*2);
+        currTriggerCenterY = triggerCenterY;
     }
+    public void ResetPipe()
+    {
+        RandomizeGapPosition();
+        transform.position = pipeSpawnPos;
+    }
+    public void Despawn()
+    {
+        DeActive();
+        ResetPipe();
+        ReturnToPool();
+    }
+    public float GetTriggerCenterY()
+    {
+        return currTriggerCenterY;
+    }
+
 }

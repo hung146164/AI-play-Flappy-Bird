@@ -1,0 +1,47 @@
+{
+    "FlappyAgent": {
+        "checkpoints": [
+            {
+                "steps": 100022,
+                "file_path": "results\\flappy2\\FlappyAgent\\FlappyAgent-100022.onnx",
+                "reward": -0.348378130367824,
+                "creation_time": 1751449519.4337466,
+                "auxillary_file_paths": [
+                    "results\\flappy2\\FlappyAgent\\FlappyAgent-100022.pt"
+                ]
+            },
+            {
+                "steps": 100022,
+                "file_path": "results\\flappy2\\FlappyAgent\\FlappyAgent-100022.onnx",
+                "reward": null,
+                "creation_time": 1751449691.8257172,
+                "auxillary_file_paths": [
+                    "results\\flappy2\\FlappyAgent\\FlappyAgent-100022.pt"
+                ]
+            },
+            {
+                "steps": 131364,
+                "file_path": "results\\flappy2\\FlappyAgent\\FlappyAgent-131364.onnx",
+                "reward": -0.27226313478068304,
+                "creation_time": 1751449838.741285,
+                "auxillary_file_paths": [
+                    "results\\flappy2\\FlappyAgent\\FlappyAgent-131364.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 131364,
+            "file_path": "results\\flappy2\\FlappyAgent.onnx",
+            "reward": -0.27226313478068304,
+            "creation_time": 1751449838.741285,
+            "auxillary_file_paths": [
+                "results\\flappy2\\FlappyAgent\\FlappyAgent-131364.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.10.0+cpu"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "FlappyAgent": {
+        "checkpoints": [
+            {
+                "steps": 16369,
+                "file_path": "results\\flappy1\\FlappyAgent\\FlappyAgent-16369.onnx",
+                "reward": -0.7750692677188229,
+                "creation_time": 1751447489.671516,
+                "auxillary_file_paths": [
+                    "results\\flappy1\\FlappyAgent\\FlappyAgent-16369.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 16369,
+            "file_path": "results\\flappy1\\FlappyAgent.onnx",
+            "reward": -0.7750692677188229,
+            "creation_time": 1751447489.671516,
+            "auxillary_file_paths": [
+                "results\\flappy1\\FlappyAgent\\FlappyAgent-16369.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.10.0+cpu"
+    }
+}

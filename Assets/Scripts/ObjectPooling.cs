@@ -10,6 +10,8 @@ public class ObjectPooling : MonoBehaviour
     private Dictionary<ObjectType,Queue<GameObject>> poolDict;
 
     private Dictionary<ObjectType, List<GameObject>> activeObjects;
+    
+
     private void Awake()
     {
         typeToPrefab = new Dictionary<ObjectType, GameObject>();
@@ -50,15 +52,21 @@ public class ObjectPooling : MonoBehaviour
     {
         foreach (var activeObj in activeObjects)
         {
-            foreach (GameObject obj in activeObj.Value)
+            ResetObjects(activeObj.Key);
+        }
+    }
+   
+    public void ResetObjects(ObjectType objt)
+    {
+        if (!activeObjects.ContainsKey(objt)) return;
+        foreach (GameObject obj in activeObjects[objt])
+        {
+            if (obj.TryGetComponent<IObject>(out IObject iobj))
             {
-                if(obj.TryGetComponent<IObject>(out IObject iobj))
+                if (iobj.Isactive)
                 {
-                    if(iobj.Isactive)
-                    {
-                        iobj.DeActive();
-                        poolDict[activeObj.Key].Enqueue(obj);
-                    }
+                    iobj.DeActive();
+                    poolDict[objt].Enqueue(obj);
                 }
             }
         }
