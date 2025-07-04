@@ -26,11 +26,7 @@ public class PipeManager : MonoBehaviour
     }
     public void ResetPipes()
     {
-        objectPool.ResetObjects(ObjectType.Pipe);
-        foreach (var pipe in activePipes)
-        {
-            pipe.Despawn();
-        }    
+        objectPool.ResetObjects(ObjectType.Pipe); 
         activePipes.Clear();
     }
 

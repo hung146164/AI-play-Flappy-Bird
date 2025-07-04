@@ -21,6 +21,8 @@ public class FlappyAgent : Agent
     {
         bird.ResetBird();
         pipeManager.ResetPipes();
+        gameManager.ResetScore();
+        gameManager.ChangeHighScore();
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -28,10 +30,10 @@ public class FlappyAgent : Agent
         (float,float) nextPipeInfo = pipeManager.GetNextPipe(transform.localPosition);
         float distanceX = nextPipeInfo.Item1;
         float center = nextPipeInfo.Item2;
-        sensor.AddObservation(transform.localPosition.y);
-        sensor.AddObservation(bird.GetGravity());
-        sensor.AddObservation(center);
-        sensor.AddObservation(distanceX);
+        sensor.AddObservation(transform.localPosition.y/10);
+        sensor.AddObservation(bird.GetGravity()/10);
+        sensor.AddObservation(center/10);
+        sensor.AddObservation(distanceX / 10);
 
     }
 
@@ -42,11 +44,15 @@ public class FlappyAgent : Agent
         {
             bird.Flap();
         }
-        AddReward(0.01f);
-        (float distanceX, float centerY) = pipeManager.GetNextPipe(transform.localPosition);
-        float deltaY = transform.localPosition.y - centerY;
+        // Trong OnActionReceived
+        //(float distanceX, float centerY) = pipeManager.GetNextPipe(transform.localPosition);
+        //float deltaY = transform.localPosition.y - centerY;
 
-        AddReward(-Mathf.Abs(deltaY) * 0.01f);
+        //if (distanceX < 0.5f && distanceX > -0.5f) 
+        //{
+        //    AddReward(-Mathf.Abs(deltaY) * 0.05f); 
+        //}
+        AddReward(0.001f); 
 
     }
 
@@ -54,17 +60,17 @@ public class FlappyAgent : Agent
     {
         if (collision.CompareTag("Obstacle"))
         {
-            AddReward(-1f);
+            AddReward(-10f);
             EndEpisode();
         }
-        if (collision.CompareTag("TriggerPoint"))
+        if (collision.CompareTag("TriggerPoint")) 
         {
-           // gameManager.AddScore(1);
-            AddReward(1.5f);
+            AddReward(1.0f);
+            gameManager.AddScore(1);
         }
         if (collision.CompareTag("Ground"))
         {
-            AddReward(-1f);
+            AddReward(-15f);
             EndEpisode();
         }
     }

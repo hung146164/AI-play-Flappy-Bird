@@ -1,0 +1,47 @@
+{
+    "FlappyAgent": {
+        "checkpoints": [
+            {
+                "steps": 499933,
+                "file_path": "results/flappy-colab-02/FlappyAgent/FlappyAgent-499933.onnx",
+                "reward": -0.30118741999547033,
+                "creation_time": 1751460209.236162,
+                "auxillary_file_paths": [
+                    "results/flappy-colab-02/FlappyAgent/FlappyAgent-499933.pt"
+                ]
+            },
+            {
+                "steps": 999946,
+                "file_path": "results/flappy-colab-02/FlappyAgent/FlappyAgent-999946.onnx",
+                "reward": 3.4844543513129738,
+                "creation_time": 1751462644.8747993,
+                "auxillary_file_paths": [
+                    "results/flappy-colab-02/FlappyAgent/FlappyAgent-999946.pt"
+                ]
+            },
+            {
+                "steps": 1000146,
+                "file_path": "results/flappy-colab-02/FlappyAgent/FlappyAgent-1000146.onnx",
+                "reward": 3.5967746840582953,
+                "creation_time": 1751462644.954335,
+                "auxillary_file_paths": [
+                    "results/flappy-colab-02/FlappyAgent/FlappyAgent-1000146.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000146,
+            "file_path": "results/flappy-colab-02/FlappyAgent.onnx",
+            "reward": 3.5967746840582953,
+            "creation_time": 1751462644.954335,
+            "auxillary_file_paths": [
+                "results/flappy-colab-02/FlappyAgent/FlappyAgent-1000146.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}

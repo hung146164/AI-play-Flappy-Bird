@@ -68,11 +68,6 @@ public class UIManager : MonoBehaviour
         highscoreTextEnd.text = score.ToString();
 
     }
-
-    public void ResetUI()
-    {
-        CloseAllMenu();
-    }
     public void ActiveReady()
     {
         readyText.gameObject.SetActive(true);

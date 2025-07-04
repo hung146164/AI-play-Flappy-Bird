@@ -5,15 +5,18 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     private PipeManager pipeManager;
-    private Player player;
     private UIManager uiManager;
+
+    [SerializeField] private Player player;
+    [SerializeField] private FlappyAgent flappyAgent;
 
     [Header("Gameplay")]
     public float spawnTime = 0.5f;
-    private bool iscooldown;
+
+    private float timer;
 
     public bool isOver { get; private set; } = false;
-    public bool isPause { get; private set; } = false;
+    public bool isPause { get; private set; } = true;
 
     private int score;
     private int highscore;
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
             OnScoreChanged?.Invoke(score);
         }
     }
+
     public int Highscore
     {
         get => highscore;
@@ -43,22 +47,19 @@ public class GameManager : MonoBehaviour
     {
         pipeManager = FindObjectOfType<PipeManager>();
         uiManager = FindObjectOfType<UIManager>();
-        player=FindObjectOfType<Player>();  
     }
+
     private void FixedUpdate()
     {
         if (isOver) return;
-        if(isPause) return;
-        if (iscooldown) return;
-        StartCoroutine(SpawnLoop());
-    }
+        if (isPause) return;
+        timer += Time.fixedDeltaTime;
 
-    private IEnumerator SpawnLoop()
-    {
-        iscooldown = true;
-        pipeManager.CreatePipe();
-        yield return new WaitForSeconds(spawnTime);
-        iscooldown = false;
+        if (timer >= spawnTime)
+        {
+            pipeManager.CreatePipe();
+            timer = 0f;
+        }
     }
 
     public void AddScore(int amt)
@@ -90,24 +91,45 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        Time.timeScale = 0f;
         isOver = false;
         pipeManager.ResetPipes();
         player.ResetPlayer();
 
-        uiManager?.ResetUI();
+        uiManager?.CloseAllMenu();
         //uiManager?.ActiveReady();
 
         ResetScore();
         Resume();
     }
+
     public void ResetScore()
     {
         Score = 0;
     }
-    private void ChangeHighScore()
+
+    public void ChangeHighScore()
     {
         if (Score > Highscore)
             Highscore = Score;
+    }
+
+    public void AiPlay()
+    {
+        flappyAgent.gameObject.SetActive(true);
+        uiManager.CloseAllMenu();
+        isPause = false;
+    }
+
+    public void PlayerPlay()
+    {
+        Debug.Log(player == null ? "yes" : "NO");
+        player.gameObject.SetActive(true);
+        uiManager.CloseAllMenu();
+        isPause = false;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();  
     }
 }

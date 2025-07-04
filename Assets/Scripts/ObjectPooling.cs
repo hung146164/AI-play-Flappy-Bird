@@ -66,7 +66,6 @@ public class ObjectPooling : MonoBehaviour
                 if (iobj.Isactive)
                 {
                     iobj.DeActive();
-                    poolDict[objt].Enqueue(obj);
                 }
             }
         }
