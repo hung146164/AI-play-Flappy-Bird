@@ -15,6 +15,8 @@ An AI-powered Flappy Bird game built with **Unity** and **ML-Agents**, where the
 > You can download it from: https://drive.google.com/drive/u/2/folders/1m6XR2w5FFZsKn3ouMKKbLHMg8o3iEzOP
 
 ## 📁 Project Structure
+
+```
 AI-play-Flappy-Bird/
 ├── Assets/ # Unity project files
 ├── config/ # ML-Agents configuration files
@@ -24,7 +26,7 @@ AI-play-Flappy-Bird/
 │  └── run_tensorboard.bat # One-click TensorBoard launcher
 ├── TrainGGColabFile/ # Google Colab notebook for training
 ├── README.md
-
+```
 
 ---
 
@@ -45,7 +47,7 @@ AI-play-Flappy-Bird/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/AI-play-Flappy-Bird.git
+git clone https://github.com/hung146164/AI-play-Flappy-Bird.git
 ```
 2. Open the Project with Unity
 Recommended Unity version: 2022.x or newer
