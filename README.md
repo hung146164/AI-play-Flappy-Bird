@@ -8,11 +8,11 @@ An AI-powered Flappy Bird game built with **Unity** and **ML-Agents**, where the
 
 > After training, the AI agent can pass through more than 100 pipes consecutively.
 
-> Video Demo: https://youtu.be/iHn-Z4ikRyo
+> Video Demo: https://youtu.be/_Yt-5arVeQs
 
 ---
 
-> You can download it from: https://drive.google.com/drive/u/2/folders/1m6XR2w5FFZsKn3ouMKKbLHMg8o3iEzOP
+> You can download it from: http://bit.ly/4nXUwVV
 
 ## 📁 Project Structure
 
